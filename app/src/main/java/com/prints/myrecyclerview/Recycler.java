@@ -10,20 +10,21 @@ public class Recycler {
 
     public Recycler(int typeNumber){
         stacks = new Stack[typeNumber];
-        for (int i = 0; i<typeNumber;i++){
+        for (int i=0;i<stacks.length;i++){
             stacks[i] = new Stack<View>();
         }
+    }
+
+    public void put(int typeNumber, View view){
+        stacks[typeNumber].push(view);
     }
 
     public View get(int typeNumber){
         try {
             return (View) stacks[typeNumber].pop();
         }catch (Exception e){
-            return null;
+            e.printStackTrace();
         }
-    }
-
-    public void put(View view,int type){
-        stacks[type].push(view);
+        return null;
     }
 }
